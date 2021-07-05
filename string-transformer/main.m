@@ -67,33 +67,37 @@ BOOL validateMenuIndex(NSString *maybeMenuIndex) {
            );
 }
 
-
-NSString *toUppercase(NSString *str) {
-    // TODO: create logic
-    NSLog(@"TODO: Uppercase");
-    return str;
+BOOL canNumberize(NSString *maybeVal) {
+    // TODO:
+    return NO;
 }
 
-NSString *toLowercase(NSString *str) {
-    // TODO: create logic
-    NSLog(@"TODO: Lowercase");
-    return str;
+BOOL isQuestion(NSString *str) {
+    return [str hasSuffix:@"?\n"];
+}
+
+BOOL isProtestation(NSString *str) {
+    return [str hasSuffix:@"!\n"];
 }
 
 void handleUppercase(NSString *str) {
-    NSString *uppercase = toUppercase(str);
+    NSString *uppercase = [str uppercaseString];
     NSLog(@"%@", uppercase);
     return;
 }
 
 void handleLowercase(NSString *str) {
-    NSString *lowercase = toLowercase(str);
+    NSString *lowercase = [str lowercaseString];
     NSLog(@"%@", lowercase);
     return;
 }
 
 void handleNumberize(NSString *str) {
-    NSLog(@"TODO: Numberize");
+    if(canNumberize(str)) {
+        NSLog(@"TODO: Numberize");
+    } else {
+        NSLog(@"Invalid value. Your input string cannot convert into int.");
+    }
     return;
 }
 
@@ -103,7 +107,13 @@ void handleCanadianize(NSString *str) {
 }
 
 void handleRespond(NSString *str) {
-    NSLog(@"TODO: Respond");
+    if(isQuestion(str)) {
+        NSLog(@"I don't know");
+    } else if (isProtestation(str)) {
+        NSLog(@"Whoa, calm down!");
+    } else {
+        // NOTE: NO RESPOND
+    }
     return;
 }
 

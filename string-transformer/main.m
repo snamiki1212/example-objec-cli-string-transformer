@@ -137,6 +137,28 @@ void *callMenu(NSString *menuIdx, NSString *str) {
     return NULL;
 }
 
+void printMenu(void) {
+    NSString *l0 = @"[Menu]";
+    NSString *l1 = @"1. Uppercase";
+    NSString *l2 = @"2. Lowercase";
+    NSString *l3 = @"3. Numberize";
+    NSString *l4 = @"4. Canadianize";
+    NSString *l5 = @"5. Respond";
+    NSString *l6 = @"6. De-Space-It";
+    NSString *msg = [
+                     NSString stringWithFormat:@"\n%@\n%@\n%@\n%@\n%@\n%@\n%@\n",
+                     l0,
+                     l1,
+                     l2,
+                     l3,
+                     l4,
+                     l5,
+                     l6
+                     ];
+    NSLog(@"%@", msg);
+    return;
+}
+
 
 // MARK: - Main
 int main(int argc, const char * argv[]) {
@@ -145,6 +167,7 @@ int main(int argc, const char * argv[]) {
         
         str = getInputStr();
         do {
+            printMenu();
             menuIdx = getInputMenuIndex();
             if(!validateMenuIndex(menuIdx)) {
                 printf("Invalid menu index. Please retry.\n");

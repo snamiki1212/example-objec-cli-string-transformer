@@ -105,7 +105,8 @@ void handleNumberize(NSString *str) {
 }
 
 void handleCanadianize(NSString *str) {
-    NSLog(@"TODO: Canadianize");
+    NSString *newStr = [NSString stringWithFormat:@"%@, eh?", str];
+    NSLog(@"%@", newStr);
     return;
 }
 
@@ -121,7 +122,8 @@ void handleRespond(NSString *str) {
 }
 
 void handleDoSpaceIt(NSString *str) {
-    NSLog(@"TODO: DoSpaceIt");
+    NSString *newStr = [str stringByReplacingOccurrencesOfString:@" " withString:@"-"];
+    NSLog(@"%@", newStr);
     return;
 }
 
@@ -149,6 +151,7 @@ int main(int argc, const char * argv[]) {
                 continue;
             }
             callMenu(menuIdx, str);
+            printf("\n");
         } while(true);
     }
     return 0;

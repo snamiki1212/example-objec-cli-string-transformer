@@ -67,9 +67,8 @@ BOOL validateMenuIndex(NSString *maybeMenuIndex) {
            );
 }
 
-BOOL canNumberize(NSString *maybeVal) {
-    // TODO:
-    return NO;
+BOOL canNumberize(NSString *maybeNumberableVal) {
+    return [[NSScanner scannerWithString:maybeNumberableVal] scanInt:nil];
 }
 
 BOOL isQuestion(NSString *str) {
@@ -80,21 +79,25 @@ BOOL isProtestation(NSString *str) {
     return [str hasSuffix:@"!\n"];
 }
 
+int numberize(NSString *str) {
+    return [str intValue];
+}
+
 void handleUppercase(NSString *str) {
-    NSString *uppercase = [str uppercaseString];
-    NSLog(@"%@", uppercase);
+    NSString *newStr = [str uppercaseString];
+    NSLog(@"%@", newStr);
     return;
 }
 
 void handleLowercase(NSString *str) {
-    NSString *lowercase = [str lowercaseString];
-    NSLog(@"%@", lowercase);
+    NSString *newStr = [str lowercaseString];
+    NSLog(@"%@", newStr);
     return;
 }
 
 void handleNumberize(NSString *str) {
     if(canNumberize(str)) {
-        NSLog(@"TODO: Numberize");
+        NSLog(@"%d", numberize(str));
     } else {
         NSLog(@"Invalid value. Your input string cannot convert into int.");
     }

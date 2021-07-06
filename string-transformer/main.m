@@ -83,47 +83,52 @@ int numberize(NSString *str) {
     return [str intValue];
 }
 
+void printNSString(NSString *str) {
+    printf("%s", [str UTF8String]);
+    return;
+}
+
 void handleUppercase(NSString *str) {
     NSString *newStr = [str uppercaseString];
-    NSLog(@"%@", newStr);
+    printNSString(newStr);
     return;
 }
 
 void handleLowercase(NSString *str) {
     NSString *newStr = [str lowercaseString];
-    NSLog(@"%@", newStr);
+    printNSString(newStr);
     return;
 }
 
 void handleNumberize(NSString *str) {
     if(canNumberize(str)) {
-        NSLog(@"%d", numberize(str));
+        printf("%d", numberize(str));
     } else {
-        NSLog(@"Invalid value. Your input string cannot convert into int.");
+        printf("Invalid value. Your input string cannot convert into int.");
     }
     return;
 }
 
 void handleCanadianize(NSString *str) {
     NSString *newStr = [NSString stringWithFormat:@"%@, eh?", str];
-    NSLog(@"%@", newStr);
+    printNSString(newStr);
     return;
 }
 
 void handleRespond(NSString *str) {
     if(isQuestion(str)) {
-        NSLog(@"I don't know");
+        printf("I don't know");
     } else if (isProtestation(str)) {
-        NSLog(@"Whoa, calm down!");
+        printf("Whoa, calm down!");
     } else {
-        // NOTE: NO RESPOND
+        printf("(No Respond)");
     }
     return;
 }
 
 void handleDoSpaceIt(NSString *str) {
     NSString *newStr = [str stringByReplacingOccurrencesOfString:@" " withString:@"-"];
-    NSLog(@"%@", newStr);
+    printNSString(newStr);
     return;
 }
 
@@ -136,6 +141,7 @@ void *callMenu(NSString *menuIdx, NSString *str) {
     if([menuIdx isEqual:@"6\n"]) handleDoSpaceIt(str);
     return NULL;
 }
+
 
 void printMenu(void) {
     NSString *l0 = @"[Menu]";
@@ -155,7 +161,7 @@ void printMenu(void) {
                      l5,
                      l6
                      ];
-    NSLog(@"%@", msg);
+    printNSString(msg);
     return;
 }
 
